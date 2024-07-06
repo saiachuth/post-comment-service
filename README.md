@@ -77,7 +77,6 @@ To run this application locally, follow these steps:
 - **Request: POST http://localhost:5000/posts/<post_id>/comments**
     ```json
    
-
    {
      "username": "jane_smith",
      "content": "Great post! Looking forward to more."
@@ -85,19 +84,8 @@ To run this application locally, follow these steps:
 
 - **Get All Post** 
 - **Request: GET http://localhost:5000/posts**
-    ```http
-   
-   http://localhost:5000/posts
 
 - **Get All Post** 
-- **Request: GET **
-    ```http
-   
-   http://localhost:5000/posts/<post_id>/comments
+- **Request: GET  http://localhost:5000/posts/<post_id>/comments**
 
-
-
-
-
-
-
+  
