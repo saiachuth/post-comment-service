@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_mysqldb import MySQL
-import markdown2
+import markdown2 #for RTS support
 from config import Config
 
 app = Flask(__name__)
@@ -8,6 +8,7 @@ app.config.from_object(Config)
 
 mysql = MySQL(app)
 
+# Function to validate if a user exists in the database, if it doesn't exist it creates 
 def validate_user(username):
     cursor = mysql.connection.cursor()
     cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
@@ -31,15 +32,14 @@ def create_post():
     cursor.close()
     return jsonify({'message': 'Post created!'}), 201
 
-# Route to create a new comment for a specific post
+# Route to create a new comment for a specific post mentioned by the <post_id>
 @app.route('/posts/<int:post_id>/comments', methods=['POST'])
 def create_comment(post_id):
     data = request.get_json()
     username = data['username']
     content = data['content']
     validate_user(username)
-    # Convert markdown content to HTML
-    html_content = markdown2.markdown(content)
+    html_content = markdown2.markdown(content) #RTS convrsion
     cursor = mysql.connection.cursor()
     cursor.execute("INSERT INTO comments (post_id, username, content) VALUES (%s, %s, %s)", (post_id, username, html_content))
     mysql.connection.commit()
@@ -54,7 +54,7 @@ def get_posts():
     cursor.close()
     return jsonify(posts), 200
 
-# Route to retrieve comments for a specific post
+# Route to retrieve comments for a specific post mentioned by the <post_id> tag
 @app.route('/posts/<int:post_id>/comments', methods=['GET'])
 def get_comments(post_id):
     cursor = mysql.connection.cursor()
