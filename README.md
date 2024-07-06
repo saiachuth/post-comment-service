@@ -11,7 +11,7 @@ simple Post-Comments service using Flask and MySQL. It allows users to create te
 
 ## Technologies Used
 - **Flask**: Python web framework for building APIs.
-- **MySQL/Workbench**: Relational database for storing posts, comments, and user data.
+- **MySQL/Workbench**: Relational database for storing posts, comments, and user data because of it's structured sotrage and scalability
 - **Markdown2**: Library for converting Markdown to HTML, used for comment formatting for the RTS implementation.
 
 ## Setup and Installation
