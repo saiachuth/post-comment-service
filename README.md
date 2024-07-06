@@ -30,3 +30,74 @@ To run this application locally, follow these steps:
    ```bash
    pip install -r requirements.txt
 
+3. **Database Setup:**:
+   Ensure MySQL is installed and running.
+   Create a MySQL database and update the config.py file with your database credentials.
+
+4. **Install Dependencies**:
+   ```bash
+   flask run
+
+
+### API Endpoints
+
+#### Create Post
+
+- **Endpoint:** `POST /posts`
+- **Description:** Creates a new post with a title and content. Requires a JSON payload with `username`, `title`, and `content` fields.
+
+#### Create Comment
+
+- **Endpoint:** `POST /posts/<post_id>/comments`
+- **Description:** Adds a comment to a specific post identified by `<post_id>`. Requires a JSON payload with `username` and `content` fields.
+
+#### Get All Posts
+
+- **Endpoint:** `GET /posts`
+- **Description:** Retrieves all posts with details including `post_id`, `title`, `content`, `created_at`, and `username`.
+
+#### Get Comments for a Post
+
+- **Endpoint:** `GET /posts/<post_id>/comments`
+- **Description:** Retrieves all comments for a specific post identified by `<post_id>`. Returns details including `comment_id`, `content`, `created_at`, and `username`.
+
+
+#### Sample Requests
+- **Create Post** 
+- **Request: POST http://localhost:5000/posts**
+    ```json
+   
+   {
+     "username": "john_doe",
+     "title": "First Post",
+     "content": "This is my first post!"
+   }
+
+- **Create Comment** 
+- **Request: POST http://localhost:5000/posts/<post_id>/comments**
+    ```json
+   
+
+   {
+     "username": "jane_smith",
+     "content": "Great post! Looking forward to more."
+   }
+
+- **Get All Post** 
+- **Request: GET http://localhost:5000/posts**
+    ```http
+   
+   http://localhost:5000/posts
+
+- **Get All Post** 
+- **Request: GET **
+    ```http
+   
+   http://localhost:5000/posts/<post_id>/comments
+
+
+
+
+
+
+
